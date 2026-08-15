@@ -1,0 +1,19 @@
+[Unit]
+Description=Sentiment dashboard - $10k sandbox sleeve
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/sentiment_analysis
+EnvironmentFile=%h/sentiment_analysis/.env
+EnvironmentFile=%h/sentiment_analysis/.env.small
+Environment=PYTHONUNBUFFERED=1
+ExecStart=%h/sentiment_analysis/.venv/bin/sentiment-dashboard --host 127.0.0.1 --port 8001 --sqlite-path data/scans-small.sqlite3 --read-only --title "Small Account Dashboard"
+Restart=always
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target

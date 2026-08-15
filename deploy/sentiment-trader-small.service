@@ -1,0 +1,20 @@
+[Unit]
+Description=Sentiment earnings options automation - $10k sandbox sleeve
+After=network-online.target sentiment-trader.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/sentiment_analysis
+EnvironmentFile=%h/sentiment_analysis/.env
+EnvironmentFile=%h/sentiment_analysis/.env.small
+Environment=PYTHONUNBUFFERED=1
+ExecStartPre=/bin/sleep 15
+ExecStart=%h/sentiment_analysis/.venv/bin/sentiment-trader daemon
+Restart=always
+RestartSec=15
+UMask=0077
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target

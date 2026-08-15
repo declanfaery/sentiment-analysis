@@ -1,0 +1,16 @@
+{
+  "scan_mode": "cheap_earnings_week",
+  "post_source": "x",
+  "earnings_source": "yfinance_calendar",
+  "earnings_window_mode": "earnings_week",
+  "hours_back": 72,
+  "min_mentions": 5,
+  "expected_move_min_pct": 5,
+  "max_candidates_to_count": 150,
+  "max_tickers_to_fetch": 8,
+  "x_max_results": 100,
+  "max_pages_per_query": 3,
+  "enrich_market_signals": true,
+  "political_activity_enabled": true,
+  "political_lookback_days": 365
+}

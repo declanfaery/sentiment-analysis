@@ -1,0 +1,13 @@
+[Unit]
+Description=One-time Webull sandbox option round-trip smoke test
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/sentiment_analysis
+EnvironmentFile=%h/sentiment_analysis/.env
+Environment=PYTHONUNBUFFERED=1
+ExecStart=%h/sentiment_analysis/.venv/bin/sentiment-trader smoke-webull --execute
+UMask=0077
+NoNewPrivileges=true

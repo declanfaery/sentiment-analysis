@@ -1,0 +1,10 @@
+[Unit]
+Description=Run the Webull sandbox smoke test once on August 10, 2026
+
+[Timer]
+OnCalendar=2026-08-10 09:40:00 America/New_York
+Persistent=true
+Unit=sentiment-smoke.service
+
+[Install]
+WantedBy=timers.target

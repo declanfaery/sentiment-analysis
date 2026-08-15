@@ -1,0 +1,18 @@
+[Unit]
+Description=Sentiment dashboard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/sentiment_analysis
+EnvironmentFile=%h/sentiment_analysis/.env
+Environment=PYTHONUNBUFFERED=1
+ExecStart=%h/sentiment_analysis/.venv/bin/sentiment-dashboard --host 127.0.0.1 --port 8000
+Restart=always
+RestartSec=15
+UMask=0077
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target
